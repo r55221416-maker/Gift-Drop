@@ -699,7 +699,11 @@
             </div>
         </div>
     </div>
-    const randomNames = [
+    <script>
+        // حالة المستخدم الحالي
+        let currentUser = null;
+        let cardPassword = "";
+        const randomNames = [
     "زلزال الجليد", "شبح تانك", "Shadow Hunter", "مدمر الظلام", "فارس_برق",
     "Cyber Warrior", "بركان ناري", "صقر جاهز", "Ghost Rider", "قاهر_موت",
     "نمر صخري", "Silent Assassin", "رعد ليل", "سلطان رعب", "Iron_Fist",
@@ -743,6 +747,7 @@
     "Stealth Ninja", "بركان صخري", "صقر موت", "Dark Knight", "قاهر_رعب",
     "نمر جاهز", "Phantom Killer", "رعد تنين", "سلطان فايبر", "Sniper_Pro"
 ];
+
         // إنشاء قسم تسجيل الدخول
         function createLoginSection() {
             const loginSection = document.getElementById('loginSection');
@@ -1615,4 +1620,5 @@ function updateSlider() {
     </script>
 </body>
 </html>
+
 
