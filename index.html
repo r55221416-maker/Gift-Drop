@@ -1538,26 +1538,32 @@ function returnToMainPage() {
         let currentIndex = 2;
         let autoSlideTimer;
         
-        function updateSlider() {
-            if(!track || slides.length === 0) return;
-            const trackWidth = track.parentElement.offsetWidth;
-            const slideWidth = slides[0].offsetWidth;
-            const centerOffset = (trackWidth / 2) - (slideWidth / 2);
-            const scrollPos = (currentIndex * slideWidth) - centerOffset;
-            track.scrollTo({ left: scrollPos, behavior: 'smooth' });
+function updateSlider() {
+    if(!track || slides.length === 0) return;
+    const trackWidth = track.parentElement.offsetWidth;
+    const slideWidth = slides[0].offsetWidth;
+    const centerOffset = (trackWidth / 2) - (slideWidth / 2);
+    const scrollPos = (currentIndex * slideWidth) - centerOffset;
+    track.scrollTo({ left: scrollPos, behavior: 'smooth' });
 
-            Array.from(slides).forEach((slide, index) => {
-                if (index === currentIndex) {
-                    slide.classList.add('active');
-                    slide.querySelector('img').classList.remove('opacity-50', 'scale-[94.211%]');
-                    slide.querySelector('img').classList.add('opacity-100', 'scale-100');
-                } else {
-                    slide.classList.remove('active');
-                    slide.querySelector('img').classList.add('opacity-50', 'scale-[94.211%]');
-                    slide.querySelector('img').classList.remove('opacity-100', 'scale-100');
-                }
-            });
+    Array.from(slides).forEach((slide, index) => {
+        // هذا التعديل سيجعل كل الصور واضحة وبحجمها الكامل دائماً
+        const img = slide.querySelector('img');
+        
+        // إزالة أي كلاس يسبب الشفافية أو التصغير
+        img.classList.remove('opacity-50', 'scale-[94.211%]', 'md:opacity-50', 'md:scale-[94.211%]');
+        
+        // إضافة كلاسات الوضوح والحجم الكامل
+        img.classList.add('opacity-100', 'scale-100');
+        
+        // إضافة كلاس active للصورة الحالية فقط (اختياري إذا كنت تستخدمه في CSS)
+        if (index === currentIndex) {
+            slide.classList.add('active');
+        } else {
+            slide.classList.remove('active');
         }
+    });
+}
         
         function slideNext() {
             if (currentIndex < slides.length - 1) {
