@@ -1,9 +1,7 @@
-
 const track   = document.getElementById('track');
 const nextBtn = document.getElementById('nextBtn');
 const prevBtn = document.getElementById('prevBtn');
 const slides  = document.querySelectorAll('.slide');
-
 let index = 0;
 let autoSlide;
 
